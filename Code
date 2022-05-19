@@ -1,0 +1,112 @@
+int m1a = 10; // m1a = motor driver IN1
+int m1b = 11; // m1b = motor driver IN2
+int m2a = 12; // m2a = motor driver IN3
+int m2b = 13; // m2b = motor driver IN4
+int buzzer = 9;// buzzer
+char val;
+
+void setup()
+{
+  pinMode(m1a, OUTPUT); // Digital pin 10
+  pinMode(m1b, OUTPUT); // Digital pin 11
+  pinMode(m2a, OUTPUT); // Digital pin 12
+  pinMode(m2b, OUTPUT);  // Digital pin 13
+  pinMode(buzzer, OUTPUT);//Digital pin 9
+ 
+  Serial.begin(9700);
+}
+void loop()
+{
+  while (Serial.available() > 0)
+  {
+    val = Serial.read();
+    Serial.println(val);
+  }
+// commande BT
+  if ( val == 'A') // avancer
+  {
+    digitalWrite(m1a, HIGH);
+    digitalWrite(m1b, LOW);
+    digitalWrite(m2a, HIGH);
+    digitalWrite(m2b, LOW);
+  }
+  else if (val == 'R') // reculer
+  {
+    digitalWrite(m1a, LOW);
+    digitalWrite(m1b, HIGH);
+    digitalWrite(m2a, LOW);
+    digitalWrite(m2b, HIGH);
+  }
+
+
+  else if (val == 'G') // gauche
+  {
+    digitalWrite(m1a, LOW);
+    digitalWrite(m1b, LOW);
+    digitalWrite(m2a, HIGH);
+    digitalWrite(m2b, LOW);
+  
+   }
+  else if (val == 'D') // droite
+  {
+    digitalWrite(m1a, HIGH);
+    digitalWrite(m1b, LOW);
+    digitalWrite(m2a, LOW);
+    digitalWrite(m2b, LOW);
+  }
+   else if (val == 'S') // stop
+  {
+    digitalWrite(m1a, LOW);
+    digitalWrite(m1b, LOW);
+    digitalWrite(m2a, LOW);
+    digitalWrite(m2b, LOW);
+  }
+ else if (val == 'B') //Buzzer
+ {
+  digitalWrite(buzzer, HIGH);
+  delay(1000);
+  digitalWrite(buzzer, LOW);
+}
+
+  //Commande vocale
+  if ( val == 'a') // avancer
+  {
+    digitalWrite(m1a, HIGH);
+    digitalWrite(m1b, LOW);
+    digitalWrite(m2a, HIGH);
+    digitalWrite(m2b, LOW);
+  }
+  else if (val == 'r') // reculer
+  {
+    digitalWrite(m1a, LOW);
+    digitalWrite(m1b, HIGH);
+    digitalWrite(m2a, LOW);
+    digitalWrite(m2b, HIGH);
+  }
+
+  else if (val == 'g') // gauche
+  {
+    digitalWrite(m1a, LOW);
+    digitalWrite(m1b, LOW);
+    digitalWrite(m2a, HIGH);
+    digitalWrite(m2b, LOW);
+  }
+  else if (val == 'd') // droite
+  {
+    digitalWrite(m1a, HIGH);
+    digitalWrite(m1b, LOW);
+    digitalWrite(m2a, LOW);
+    digitalWrite(m2b, LOW);
+  }
+   else if (val == 's') // stop
+  {
+    digitalWrite(m1a, LOW);
+    digitalWrite(m1b, LOW);
+    digitalWrite(m2a, LOW);
+    digitalWrite(m2b, LOW);
+  }
+  
+
+ 
+ 
+}
